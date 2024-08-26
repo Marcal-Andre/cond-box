@@ -1,0 +1,64 @@
+<!DOCTYPE html>  
+<html lang="pt-BR">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <script src="https://cdn.tailwindcss.com"></script>  
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="script.js"></script>
+    <title>Conde - Box 360</title>
+    <style>  
+        
+    </style>  
+</head>  
+<body>  
+    <div class="header"> 
+        <div class="titulo">
+            <span><h1>Conde-Box</h1></span>
+        </div> 
+
+        <nav>  
+            <a href="./cadastro de moradores.html">Cadastro de Moradores</a>  
+            <a href="#">Pessoas Autorizadas </a>  
+            <a href="#">Prestadores de Serviços</a>  
+            <a href="#">Registro de Chaves</a>  
+            <a href="#">Reserva de Ambiente</a>  
+        </nav>  
+    </div> 
+    
+    <div class="flex items-center justify-center min-h-screen bg-gray-100">  
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">  
+            <div class="card bg-white p-6 rounded-lg shadow-lg cursor-pointer" onclick="expandCard(this)">  
+                <h2 class="text-xl font-bold">Cadastro de Moradores</h2>  
+                <p>Registros de moradores cadastrados.</p>  
+            </div>  
+            <div class="card bg-white p-6 rounded-lg shadow-lg cursor-pointer" onclick="expandCard(this)">  
+                <h2 class="text-xl font-bold">Pessoas Autorizadas</h2>  
+                <p>Lista de pessoas autorizadas.</p>  
+            </div>  
+            <div class="card bg-white p-6 rounded-lg shadow-lg cursor-pointer" onclick="expandCard(this)">  
+                <h2 class="text-xl font-bold">Prestadores de Serviços</h2>  
+                <p>Informações sobre prestadores de serviços.</p>  
+            </div>  
+            <div class="card bg-white p-6 rounded-lg shadow-lg cursor-pointer" onclick="expandCard(this)">  
+                <h2 class="text-xl font-bold">Registro de Chaves</h2>  
+                <p>Controle de chaves registradas.</p>  
+            </div>  
+            <div class="card bg-white p-6 rounded-lg shadow-lg cursor-pointer" onclick="expandCard(this)">  
+                <h2 class="text-xl font-bold">Reserva de Ambientes</h2>  
+                <p>Gerenciamento de reservas de ambientes.</p>  
+            </div>  
+        </div>  
+
+    <script>  
+        function expandCard(card) {  
+            const cards = document.querySelectorAll('.card');  
+            cards.forEach(c => {  
+                c.classList.remove('card-expanded');  
+            });  
+            card.classList.toggle('card-expanded');  
+        }  
+    </script> 
+   
+</body>  
+</html>  

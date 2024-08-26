@@ -1,0 +1,39 @@
+body {  
+    font-family: Arial, sans-serif;  
+    margin: 0;  
+}  
+.header {  
+    background-color: black;  
+    color: white;  
+    padding: 15px;  
+    display: flex;  
+    justify-content: space-between;  
+    align-items: center;
+    height: 70px; 
+}  
+.titulo{
+    display: flex;
+    font-size: 30px;
+    font-weight: bold;
+    margin-left: 40px;
+}
+.header a {  
+    color: white;  
+    text-decoration: none;  
+    margin: 0 15px;
+    margin-right: 30px;  
+}  
+.content {  
+    padding: 20px;  
+} 
+.card {  
+    transition: transform 0.3s, box-shadow 0.3s;  
+}  
+.card:hover {  
+    transform: scale(1.05);  
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);  
+}  
+.card-expanded {  
+    transform: scale(1.2);  
+    z-index: 50;  
+} 
