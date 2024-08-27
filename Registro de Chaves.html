@@ -1,0 +1,54 @@
+  
+    <html lang="pt-BR">  
+    <head>  
+        <meta charset="UTF-8">  
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+        <title>Registro de Saídas de Chaves</title>  
+        <script src="https://cdn.tailwindcss.com"></script>  
+        <style>  
+            body {  
+                font-family: Arial, sans-serif;  
+            }  
+        </style>  
+    </head>  
+    <body class="flex">  
+        <div class="w-1/2 p-4">  
+            <h1 class="text-xl font-bold mb-4">Registro de Saídas de Chaves</h1>  
+            <form id="keyForm" class="flex flex-col">  
+                <input type="text" id="name" placeholder="Nome" class="mb-2 p-2 border" required>  
+                <input type="text" id="apartment" placeholder="Apartamento/Bloco" class="mb-2 p-2 border" required>  
+                <input type="text" id="keys" placeholder="Chaves" class="mb-2 p-2 border" required>  
+                <textarea id="observations" placeholder="Observações" class="mb-2 p-2 border"></textarea>  
+                <button type="submit" class="bg-blue-500 text-white p-2">Registrar Saída</button>  
+            </form>  
+        </div>  
+        <div class="w-1/2 p-4">  
+            <h2 class="text-xl font-bold mb-4">Registros</h2>  
+            <ul id="recordList" class="list-disc pl-5"></ul>  
+        </div>  
+        <script>  
+            document.getElementById('keyForm').addEventListener('submit', function(event) {  
+                event.preventDefault();  
+                
+                const name = document.getElementById('name').value;  
+                const apartment = document.getElementById('apartment').value;  
+                const keys = document.getElementById('keys').value;  
+                const observations = document.getElementById('observations').value;  
+                const time = new Date().toLocaleString();  
+
+                const recordItem = document.createElement('li');  
+                recordItem.className = 'flex justify-between items-center mb-2';  
+                recordItem.innerHTML = `<span>${time} - ${name}, ${apartment}, ${keys} - ${observations}</span>  
+                                        <button class="bg-red-500 text-white p-1 ml-2" onclick="removeRecord(this)">Remover</button>`;  
+                
+                document.getElementById('recordList').appendChild(recordItem);  
+                this.reset();  
+            });  
+
+            function removeRecord(button) {  
+                const recordItem = button.parentElement;  
+                recordItem.remove();  
+            }  
+        </script>  
+    </body>  
+    </html>  

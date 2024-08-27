@@ -1,0 +1,92 @@
+<!DOCTYPE html>  
+    <html lang="pt-BR">  
+    <head>  
+        <meta charset="UTF-8">  
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+        <title>Sistema de Reservas de Ambiente</title>  
+        <script src="https://cdn.tailwindcss.com"></script>  
+    </head>  
+    <body class="bg-gray-100 p-8">  
+        <div class="flex">  
+            <div class="w-1/2 pr-4">  
+                <h1 class="text-2xl font-bold mb-4">Reserva de Ambiente</h1>  
+                <form id="reservationForm">  
+                    <div class="mb-4">  
+                        <label for="name" class="block text-sm font-medium text-gray-700">Nome:</label>  
+                        <input type="text" id="name" required class="mt-1 block w-full border border-gray-300 rounded-md p-2" />  
+                    </div>  
+                    <div class="mb-4">  
+                        <label for="apartment" class="block text-sm font-medium text-gray-700">Apartamento/Bloco:</label>  
+                        <input type="text" id="apartment" required class="mt-1 block w-full border border-gray-300 rounded-md p-2" />  
+                    </div>  
+                    <div class="mb-4">  
+                        <label for="date" class="block text-sm font-medium text-gray-700">Data (dia/mês/ano):</label>  
+                        <input type="date" id="date" required class="mt-1 block w-full border border-gray-300 rounded-md p-2" />  
+                    </div>  
+                    <div class="mb-4">  
+                        <label for="location" class="block text-sm font-medium text-gray-700">Local:</label>  
+                        <select id="location" required class="mt-1 block w-full border border-gray-300 rounded-md p-2">  
+                            <option value="Salão de Festa 1">Salão de Festa 1</option>  
+                            <option value="Salão de Festa 2">Salão de Festa 2</option>  
+                            <option value="Deck">Deck</option>  
+                        </select>  
+                    </div>  
+                    <div class="mb-4">  
+                        <label for="guestList" class="block text-sm font-medium text-gray-700">Upload da Lista de Convidados:</label>  
+                        <input type="file" id="guestList" accept=".txt,.csv" class="mt-1 block w-full border border-gray-300 rounded-md p-2" />  
+                    </div>  
+                    <button type="submit" class="w-full bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600">Reservar</button>  
+                </form>  
+                <div id="guestListDisplay" class="mt-6 bg-white p-4 rounded-lg shadow-md hidden">  
+                    <h2 class="text-lg font-bold mb-2">Lista de Convidados</h2>  
+                    <ul id="guestListItems" class="list-disc pl-5"></ul>  
+                </div>  
+            </div>  
+            <div class="w-1/2 pl-4">  
+                <h1 class="text-2xl font-bold mb-4">Registros Agendados</h1>  
+                <div id="scheduledReservations" class="bg-white p-4 rounded-lg shadow-md">  
+                    <p class="text-gray-500">Nenhuma reserva agendada ainda.</p>  
+                </div>  
+            </div>  
+        </div>  
+        <script>  
+            document.getElementById('reservationForm').addEventListener('submit', function(event) {  
+                event.preventDefault();  
+                const name = document.getElementById('name').value;  
+                const apartment = document.getElementById('apartment').value;  
+                const date = document.getElementById('date').value;  
+                const location = document.getElementById('location').value;  
+
+                const reservationEntry = document.createElement('div');  
+                reservationEntry.className = 'border-b border-gray-300 py-2';  
+                reservationEntry.innerText = `${name} - ${apartment} - ${date} - ${location}`;  
+                document.getElementById('scheduledReservations').appendChild(reservationEntry);  
+
+                alert('Reserva realizada com sucesso!');  
+                this.reset();  
+                document.getElementById('guestListDisplay').classList.add('hidden');  
+                document.getElementById('guestListItems').innerHTML = '';  
+            });  
+
+            document.getElementById('guestList').addEventListener('change', function(event) {  
+                const file = event.target.files[0];  
+                if (file) {  
+                    const reader = new FileReader();  
+                    reader.onload = function(e) {  
+                        const text = e.target.result;  
+                        const guests = text.split('\n').filter(guest => guest.trim() !== '');  
+                        const guestListItems = document.getElementById('guestListItems');  
+                        guestListItems.innerHTML = '';  
+                        guests.forEach(guest => {  
+                            const listItem = document.createElement('li');  
+                            listItem.innerText = guest;  
+                            guestListItems.appendChild(listItem);  
+                        });  
+                        document.getElementById('guestListDisplay').classList.remove('hidden');  
+                    };  
+                    reader.readAsText(file);  
+                }  
+            });  
+        </script>  
+    </body>  
+    </html>  
