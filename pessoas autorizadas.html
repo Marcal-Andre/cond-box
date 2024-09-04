@@ -1,0 +1,99 @@
+<!DOCTYPE html>  
+    <html lang="pt-BR">  
+    <head>  
+        <meta charset="UTF-8">  
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+        <title>Cadastro de Pessoas Autorizadas</title>  
+        <script src="https://cdn.tailwindcss.com"></script>  
+        <style>  
+            .hidden {  
+                display: none;  
+            }  
+        </style>  
+    </head>  
+    <body class="bg-gray-100 p-6">  
+        <div class="max-w-lg mx-auto bg-white p-8 rounded-lg shadow-md">  
+            <h1 class="text-2xl font-bold mb-6">Cadastro de Pessoas Autorizadas</h1>  
+            <form id="cadastroForm">  
+                <div id="pessoas" class="mb-4">  
+                    <div class="pessoa mb-4 border p-4 rounded-md">  
+                        <h2 class="text-lg font-semibold">Pessoa Autorizada</h2>  
+                        <label for="nome" class="block text-sm font-medium text-gray-700">Nome Completo</label>  
+                        <input type="text" name="nome" required class="mt-1 block w-full border border-gray-300 rounded-md p-2" />  
+                        
+                        <label for="documento" class="block text-sm font-medium text-gray-700 mt-2">Documento</label>  
+                        <select name="documento" required class="mt-1 block w-full border border-gray-300 rounded-md p-2">  
+                            <option value="" disabled selected>Selecione</option>  
+                            <option value="RG">RG</option>  
+                            <option value="CPF">CPF</option>  
+                        </select>  
+                        
+                        <label for="numeroDocumento" class="block text-sm font-medium text-gray-700 mt-2">Número do Documento</label>  
+                        <input type="text" name="numeroDocumento" required class="mt-1 block w-full border border-gray-300 rounded-md p-2" />  
+                        
+                        <label for="apartamento" class="block text-sm font-medium text-gray-700 mt-2">Apartamento/Bloco</label>  
+                        <input type="text" name="apartamento" required class="mt-1 block w-full border border-gray-300 rounded-md p-2" />  
+                        
+                        <div class="carros mb-4">  
+                            <label for="carro" class="block text-sm font-medium text-gray-700 mt-2">Carro</label>  
+                            <input type="text" name="carro" required class="mt-1 block w-full border border-gray-300 rounded-md p-2" />  
+                            <input type="text" name="cor" placeholder="Cor" required class="mt-2 block w-full border border-gray-300 rounded-md p-2" />  
+                            <input type="text" name="placa" placeholder="Placa" required class="mt-2 block w-full border border-gray-300 rounded-md p-2" />  
+                        </div>  
+                        <button type="button" onclick="adicionarCarro(this)" class="mt-2 text-blue-500">Adicionar mais carros</button>  
+                    </div>  
+                </div>  
+                <button type="button" onclick="adicionarPessoa()" class="w-full bg-blue-500 text-white p-2 rounded-md">Adicionar mais pessoas</button>  
+                <button type="submit" class="w-full bg-green-500 text-white p-2 rounded-md mt-4">Cadastrar</button>  
+            </form>  
+        </div>  
+
+        <script>  
+            function adicionarPessoa() {  
+                const pessoasDiv = document.getElementById('pessoas');  
+                const novaPessoa = document.createElement('div');  
+                novaPessoa.className = 'pessoa mb-4 border p-4 rounded-md';  
+                novaPessoa.innerHTML = `  
+                    <h2 class="text-lg font-semibold">Pessoa Autorizada</h2>  
+                    <label for="nome" class="block text-sm font-medium text-gray-700">Nome Completo</label>  
+                    <input type="text" name="nome" required class="mt-1 block w-full border border-gray-300 rounded-md p-2" />  
+                    
+                    <label for="documento" class="block text-sm font-medium text-gray-700 mt-2">Documento</label>  
+                    <select name="documento" required class="mt-1 block w-full border border-gray-300 rounded-md p-2">  
+                        <option value="" disabled selected>Selecione</option>  
+                        <option value="RG">RG</option>  
+                        <option value="CPF">CPF</option>  
+                    </select>  
+                    
+                    <label for="numeroDocumento" class="block text-sm font-medium text-gray-700 mt-2">Número do Documento</label>  
+                    <input type="text" name="numeroDocumento" required class="mt-1 block w-full border border-gray-300 rounded-md p-2" />  
+                    
+                    <label for="apartamento" class="block text-sm font-medium text-gray-700 mt-2">Apartamento/Bloco</label>  
+                    <input type="text" name="apartamento" required class="mt-1 block w-full border border-gray-300 rounded-md p-2" />  
+                    
+                    <div class="carros mb-4">  
+                        <label for="carro" class="block text-sm font-medium text-gray-700 mt-2">Carro</label>  
+                        <input type="text" name="carro" required class="mt-1 block w-full border border-gray-300 rounded-md p-2" />  
+                        <input type="text" name="cor" placeholder="Cor" required class="mt-2 block w-full border border-gray-300 rounded-md p-2" />  
+                        <input type="text" name="placa" placeholder="Placa" required class="mt-2 block w-full border border-gray-300 rounded-md p-2" />  
+                    </div>  
+                    <button type="button" onclick="adicionarCarro(this)" class="mt-2 text-blue-500">Adicionar mais carros</button>  
+                `;  
+                pessoasDiv.appendChild(novaPessoa);  
+            }  
+
+            function adicionarCarro(button) {  
+                const carrosDiv = button.previousElementSibling;  
+                const novoCarro = document.createElement('div');  
+                novoCarro.className = 'mt-2';  
+                novoCarro.innerHTML = `  
+                    <label for="carro" class="block text-sm font-medium text-gray-700 mt-2">Carro</label>  
+                    <input type="text" name="carro" placeholder="Modelo do carro" class="block w-full border border-gray-300 rounded-md p-2" required />  
+                    <input type="text" name="cor" placeholder="Cor" class="block w-full border border-gray-300 rounded-md p-2 mt-2" required />  
+                    <input type="text" name="placa" placeholder="Placa" class="block w-full border border-gray-300 rounded-md p-2 mt-2" required />  
+                `;  
+                carrosDiv.appendChild(novoCarro);  
+            }  
+        </script>  
+    </body>  
+    </html>  

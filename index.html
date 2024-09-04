@@ -7,7 +7,27 @@
     <link rel="stylesheet" href="./css/style.css">
     <script src="script.js"></script>
     <title>Conde - Box 360</title>
-    <style>  
+    <style> 
+    .contact-item {  
+                transition: transform 0.2s;  
+            }  
+            .contact-item:hover {  
+                transform: scale(1.1);  
+            }  
+            .phone-number {  
+                display: none;  
+                margin-top: 4px;  
+                font-weight: bold;  
+            }  
+            .sidebar {  
+                position: fixed;  
+                right: 0;  
+                top: 14%;  
+                width: 250px;  
+                background-color: #f0f0f0;  
+                padding: 16px;  
+                box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);  
+            }   
         
     </style>  
 </head>  
@@ -19,46 +39,53 @@
 
         <nav>  
             <a href="./cadastro de moradores.html">Cadastro de Moradores</a>  
-            <a href="#">Pessoas Autorizadas </a>  
-            <a href="#">Prestadores de Serviços</a>  
+            <a href="./pessoas autorizadas.html">Pessoas Autorizadas </a>  
+            <a href="./prestadores de serviço.html">Prestadores de Serviços</a>  
             <a href="./Registro de Chaves.html">Registro de Chaves</a>  
             <a href="./reserva de ambientes.html">Reserva de Ambiente</a>  
         </nav>  
     </div> 
-    
-    <div class="flex items-center justify-center min-h-screen bg-gray-100">  
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">  
-            <div class="card bg-white p-6 rounded-lg shadow-lg cursor-pointer" onclick="expandCard(this)">  
-                <h2 class="text-xl font-bold">Cadastro de Moradores</h2>  
-                <p>Registros de moradores cadastrados.</p>  
-            </div>  
-            <div class="card bg-white p-6 rounded-lg shadow-lg cursor-pointer" onclick="expandCard(this)">  
-                <h2 class="text-xl font-bold">Pessoas Autorizadas</h2>  
-                <p>Lista de pessoas autorizadas.</p>  
-            </div>  
-            <div class="card bg-white p-6 rounded-lg shadow-lg cursor-pointer" onclick="expandCard(this)">  
-                <h2 class="text-xl font-bold">Prestadores de Serviços</h2>  
-                <p>Informações sobre prestadores de serviços.</p>  
-            </div>  
-            <div class="card bg-white p-6 rounded-lg shadow-lg cursor-pointer" onclick="expandCard(this)">  
-                <h2 class="text-xl font-bold">Registro de Chaves</h2>  
-                <p>Controle de chaves registradas.</p>  
-            </div>  
-            <div class="card bg-white p-6 rounded-lg shadow-lg cursor-pointer" onclick="expandCard(this)">  
-                <h2 class="text-xl font-bold">Reserva de Ambientes</h2>  
-                <p>Gerenciamento de reservas de ambientes.</p>  
-            </div>  
+
+    <div class="flex">  
+        <div class="sidebar">  
+            <h2 class="text-xl font-bold mb-4">Contatos</h2>  
+            <ul id="contact-list">  
+                <li class="contact-item cursor-pointer" onclick="togglePhone('phone-joao')">Administração  
+                    <span id="phone-joao" class="phone-number">1234-5678</span>  
+                </li>  
+                <li class="contact-item cursor-pointer" onclick="togglePhone('phone-maria')">Maria Oliveira  
+                    <span id="phone-maria" class="phone-number">9876-5432</span>  
+                </li>  
+                <li class="contact-item cursor-pointer" onclick="togglePhone('phone-carlos')">Carlos Pereira  
+                    <span id="phone-carlos" class="phone-number">4567-8901</span>  
+                </li>  
+                <li class="contact-item cursor-pointer" onclick="togglePhone('phone-ana')">Ana Costa  
+                    <span id="phone-ana" class="phone-number">2345-6789</span>  
+                </li> 
+                <li class="contact-item cursor-pointer" onclick="togglePhone('phone-ana')">Marta Alves 
+                    <span id="phone-ana" class="phone-number">2345-6789</span>  
+                </li> 
+                <li class="contact-item cursor-pointer" onclick="togglePhone('phone-ana')">Ana Costa  
+                    <span id="phone-ana" class="phone-number">2345-6789</span>  
+                </li> 
+                <li class="contact-item cursor-pointer" onclick="togglePhone('phone-ana')">Ana Costa  
+                    <span id="phone-ana" class="phone-number">2345-6789</span>  
+                </li> 
+                <li class="contact-item cursor-pointer" onclick="togglePhone('phone-ana')">Ana Costa  
+                    <span id="phone-ana" class="phone-number">2345-6789</span>  
+                </li>  
+                <li class="contact-item cursor-pointer" onclick="togglePhone('phone-ana')">Portaria  
+                    <span id="phone-ana" class="phone-number">3256-1734</span>  
+                </li> 
+            </ul>  
         </div>  
 
-    <script>  
-        function expandCard(card) {  
-            const cards = document.querySelectorAll('.card');  
-            cards.forEach(c => {  
-                c.classList.remove('card-expanded');  
-            });  
-            card.classList.toggle('card-expanded');  
-        }  
-    </script> 
-   
-</body>  
+        <script>  
+            function togglePhone(phoneId) {  
+                const phoneElement = document.getElementById(phoneId);  
+                phoneElement.style.display = phoneElement.style.display === 'none' || phoneElement.style.display === '' ? 'inline' : 'none';  
+            }  
+        </script>  
+
+</div>  
 </html>  
