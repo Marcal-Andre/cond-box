@@ -1,34 +1,67 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Cadastro de Moradores</title>
-    <link rel="stylesheet" href="./css/cadastro de moradores.css">
-</head>
-<body>
+<!DOCTYPE html>  
+    <html lang="pt-BR">  
+    <head>  
+        <meta charset="UTF-8">  
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+        <title>Cadastro de Moradores</title>  
+        <script src="https://cdn.tailwindcss.com"></script>  
+        <style>  
+            .hidden {  
+                display: none;  
+            }  
+        </style>  
+    </head>  
+    <body class="bg-gray-100 p-6">  
+        <div class="max-w-lg mx-auto bg-white p-8 rounded-lg shadow-md">  
+            <h1 class="text-2xl font-bold mb-6">Cadastro de Moradores</h1>  
+            <form id="cadastroForm">  
+                <div class="mb-4">  
+                    <label for="nome" class="block text-sm font-medium text-gray-700">Nome Completo</label>  
+                    <input type="text" id="nome" name="nome" required class="mt-1 block w-full border border-gray-300 rounded-md p-2" />  
+                    <label for="telefone" class="block text-sm font-medium text-gray-700 mt-2">Telefone</label>  
+                    <input type="tel" id="telefone" name="telefone" required class="mt-1 block w-full border border-gray-300 rounded-md p-2" />  
+                    <button type="button" onclick="adicionarMorador()" class="mt-2 text-blue-500">Adicionar mais residentes</button>  
+                </div>  
+                <div id="moradores" class="mb-4"></div>  
+                <div class="mb-4">  
+                    <label for="apartamento" class="block text-sm font-medium text-gray-700">Apartamento/Bloco</label>  
+                    <input type="text" id="apartamento" name="apartamento" required class="mt-1 block w-full border border-gray-300 rounded-md p-2" />  
+                </div>  
+                <div class="mb-4">  
+                    <label for="veiculo" class="block text-sm font-medium text-gray-700">Veículo</label>  
+                    <input type="text" id="veiculo" name="veiculo" required class="mt-1 block w-full border border-gray-300 rounded-md p-2" />  
+                    <input type="text" id="cor" name="cor" placeholder="Cor" required class="mt-2 block w-full border border-gray-300 rounded-md p-2" />  
+                    <input type="text" id="placa" name="placa" placeholder="Placa" required class="mt-2 block w-full border border-gray-300 rounded-md p-2" />  
+                    <button type="button" onclick="adicionarVeiculo()" class="mt-2 text-blue-500">Adicionar mais veículos</button>  
+                </div>  
+                <div id="veiculos" class="mb-4"></div>  
+                <button type="submit" class="w-full bg-blue-500 text-white p-2 rounded-md">Cadastrar</button>  
+            </form>  
+        </div>  
 
-    <form id="form-morador">
-        <h1>Cadastro de Moradores</h1>
+        <script>  
+            function adicionarMorador() {  
+                const moradoresDiv = document.getElementById('moradores');  
+                const novoMorador = document.createElement('div');  
+                novoMorador.className = 'mt-2';  
+                novoMorador.innerHTML = `  
+                    <input type="text" name="morador" placeholder="Nome do residente" class="block w-full border border-gray-300 rounded-md p-2" required />  
+                    <input type="tel" name="telefone" placeholder="Telefone" class="block w-full border border-gray-300 rounded-md p-2 mt-2" required />  
+                `;  
+                moradoresDiv.appendChild(novoMorador);  
+            }  
 
-        <label for="nome">Nome:</label>
-        <input type="text" id="nome" name="nome" required>
-
-        <label for="telefone">Telefone:</label>
-        <input type="tel" id="telefone" name="telefone" required>
-
-        <label for="apartamento">Apartamento:</label>
-        <input type="text" id="apartamento" name="apartamento" required>
-
-        <label for="veiculo">Veículo:</label>
-        <input type="text" id="veiculo" name="veiculo">
-
-        <label for="cor">Cor:</label>
-        <input type="text" id="cor" name="cor">
-
-        <label for="placa">Placa:</label>
-        <input type="text" id="placa" name="placa">
-
-        <button type="submit">Cadastrar</button>
-    </form>
-    <script src="script.js"></script>
-</body>
-</html>
+            function adicionarVeiculo() {  
+                const veiculosDiv = document.getElementById('veiculos');  
+                const novoVeiculo = document.createElement('div');  
+                novoVeiculo.className = 'mt-2';  
+                novoVeiculo.innerHTML = `  
+                    <input type="text" name="veiculo" placeholder="Modelo do veículo" class="block w-full border border-gray-300 rounded-md p-2" required />  
+                    <input type="text" name="cor" placeholder="Cor" class="block w-full border border-gray-300 rounded-md p-2 mt-2" required />  
+                    <input type="text" name="placa" placeholder="Placa" class="block w-full border border-gray-300 rounded-md p-2 mt-2" required />  
+                `;  
+                veiculosDiv.appendChild(novoVeiculo);  
+            }  
+        </script>  
+    </body>  
+    </html>  
