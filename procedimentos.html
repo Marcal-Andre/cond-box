@@ -1,0 +1,41 @@
+<html lang="pt-BR">  
+    <head>  
+        <meta charset="UTF-8">  
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+        <title>Regras para Porteiros</title>  
+        <script src="https://cdn.tailwindcss.com"></script>  
+        <style>  
+            body {  
+                background-color: #f9fafb;  
+            }  
+        </style>  
+    </head>  
+    <body class="flex flex-col items-center justify-center min-h-screen">  
+        <h1 class="text-3xl font-bold mb-6">Regras Padrão de Procedimentos para Porteiros</h1>  
+        <div id="cards-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">  
+              
+        </div>  
+
+        <script>  
+            const regras = [  
+                "Verificar a identidade de visitantes antes de permitir a entrada.",  
+                "Registrar todas as entradas e saídas no livro de ocorrências.",  
+                "Manter a portaria limpa e organizada.",  
+                "Atender telefonemas de forma cortês e profissional.",  
+                "Reportar qualquer atividade suspeita à segurança.",  
+                "Garantir que as portas estejam sempre trancadas fora do horário de expediente.",  
+                "Realizar rondas periódicas nas dependências do prédio.",  
+                "Manter contato com os moradores e estar disponível para dúvidas."  
+            ];  
+
+            const cardsContainer = document.getElementById('cards-container');  
+
+            regras.forEach(regra => {  
+                const card = document.createElement('div');  
+                card.className = 'bg-white shadow-md rounded-lg p-4';  
+                card.innerHTML = `<p class="text-lg">${regra}</p>`;  
+                cardsContainer.appendChild(card);  
+            });  
+        </script>  
+    </body>  
+    </html> 
